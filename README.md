@@ -1,5 +1,5 @@
 Rock Paper Scissors: Ultimate Edition
-===========================
+=====================================
 
 A React game to play rock paper scissors against the computer.
 

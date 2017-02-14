@@ -23,12 +23,12 @@ export default class extends React.Component {
       
       var game = this.props.scores[this.props.scores.length - 1];
       if (game.result === 1) {
-        message = 'Draw.';
+        message = 'You tied. Try again!';
       } else if (game.result === 2) {
-        message = 'You Won: '+ game.player + ' beat ' + game.computer + '!';
+        message = 'You Won: '+ game.total.wins + ' beat ' + game.total.losses + '!';
         alertClass = 'won';
-      } else {
-        message = 'You Lost: '+ game.computer + ' beat ' + game.player + '!';
+      } else {  
+        message = 'You Lost: '+ game.total.losses + ' to ' + game.total.wins + '!';
         alertClass = 'lost'
       }
     }
@@ -36,7 +36,7 @@ export default class extends React.Component {
     return (
       <div>
         <div className="text-center">
-          <h4>Results</h4>
+          <h4 className="caps">Results</h4>
         </div>            
         <nav className="navbar navbar-default">
           <div className="container-fluid gameInfo">
@@ -44,13 +44,13 @@ export default class extends React.Component {
               <div className="col-sm-6">
                 <h4 className={alertClass}><span><strong>{message}</strong></span></h4>
               </div>
-              <div className="col-sm-2 text-right">
+              <div className="col-sm-2 text-right-large">
                 <h4>Won: <span><strong>{stats.won}</strong></span></h4>
               </div>
-              <div className="col-sm-2 text-right">
+              <div className="col-sm-2 text-right-large">
                 <h4>Lost: <span><strong>{stats.lost}</strong></span></h4>
               </div>
-              <div className="col-sm-2 text-right">
+              <div className="col-sm-2 text-right-large">
                 <h4>Tie: <span><strong>{stats.tie}</strong></span></h4>
               </div>
             </div>

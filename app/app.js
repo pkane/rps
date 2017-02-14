@@ -19,12 +19,21 @@ class App extends React.Component {
       rounds: [],
       games: [],
       set : [],
-      tally : 0
+      tally : this.tally()
     };
 
     this.throwRandom = this.throwRandom.bind(this);
     this.throw = this.throw.bind(this);
     this.checkRounds = this.checkRounds.bind(this);
+    this.tally = this.tally.bind(this);
+  }
+
+  tally() {
+    return {
+      total: 0,
+      wins: 0,
+      losses : 0
+    };
   }
 
   throwRandom() {
@@ -41,6 +50,11 @@ class App extends React.Component {
     var games = this.state.games;    
     var tally = this.state.tally;
 
+    if (set.length <= 0) {
+      console.log('reset');
+      this.setState({rounds : []});
+    }
+
     if (this.state.computer === option) {
       // you tied
       round.result = 1;
@@ -51,48 +65,51 @@ class App extends React.Component {
       (this.state.computer === "Paper" && option === "Scissors") ||
       (this.state.computer === "Scissors" && option === "Rock") ) {
       round.result = 2;
+      tally.wins ++;
       console.log('you won the round.', "You: " + option, "PC: " + this.state.computer);
     } else {
       // you lost
       round.result = 0;
+      tally.losses ++;      
       console.log('you lost the round.', "You: " + option, "PC: " + this.state.computer);
     }
 
     round.computer = this.state.computer;
     round.player = option;
-    tally += round.result;
+    tally.total += round.result;
 
     set.push(round);
     rounds.push(round);
 
-    console.log(set, tally);
+    console.log(set, tally.total);
 
     if (set.length > 0 && set.length == this.state.numRounds) {
       var result;
-      console.log(tally);
+      console.log(tally.total);
 
-      if (tally == set.length) {
-        result = 'Draw'
+      if (tally.total == set.length) {
+        round.gameResult = result = 'Draw';
         game.result = 1;
-      } else if (tally > set.length) {
-        result = 'Win!'
+      } else if (tally.total > set.length) {
+        round.gameResult = result = 'Win'
         game.result = 2;
       } else {
-        result = 'Loss...'
+        round.gameResult = result = 'Loss'
         game.result = 0;
       }
 
+      game.total = tally;
       games.push(game);
       console.log(result);
 
       this.setState({games, games});
       this.setState({set : []});
-      this.setState({tally : 0});
+      this.setState({tally : this.tally()});
     } else {
       this.setState({tally, tally});
     }
 
-    this.setState({rounds, rounds});          
+    this.setState({rounds, rounds});
 
     var random = this.throwRandom();
     this.setState({computer: random});
@@ -135,7 +152,7 @@ class App extends React.Component {
         <Rounds checkRounds={this.checkRounds} />
         <Selector throw={this.throw} />
         <Scores scores={this.state.games} />        
-        <History rounds={this.state.rounds} />
+        <History rounds={this.state.rounds} games={this.state.games} />
       </div>
     )
   }

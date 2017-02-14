@@ -1,7 +1,12 @@
-Rock Paper Scissors: Ultimate Edition
-=====================================
+RPS: Rock Paper Scissors
+========================
 
 A React game to play rock paper scissors against the computer.
+Features:
+- React
+- Webpack
+- Sass
+- Bootstrap 
 
 ## Install:
 
@@ -15,8 +20,8 @@ Install npm dependencies:
 
 Build your bundle:
 
-`$ webpack` or
-`$ npm run dev`
+`$ npm run dev` or
+`$ npm run watch` to watch your files
 
 Serve your public/index.html via http to play the game. 
 

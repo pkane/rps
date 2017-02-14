@@ -1,14 +1,16 @@
 {
   "name": "rock-paper-scissors",
   "version": "1.0.0",
-  "description": "A React Rock Paper Scissors Game",
+  "description": "Rock Paper Scissors Game built with React",
   "main": "app.js",
   "scripts": {
-    "dev-server": "webpack-dev-server",
-    "dev": "webpack --watch"
+    "serve": "webpack-dev-server --compress",
+    "build-css": "node-sass --include-path scss app/scss/main.scss public/styles.css",
+    "dev": "webpack && npm run build-css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "watch": "nodemon -e scss,js -x \"npm run build-css && webpack\""
   },
-  "author": "Nick Balestra",
-  "license": "MIT",
+  "author": "Paul Kane",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "lodash": "^3.10.1",
@@ -24,6 +26,8 @@
     "css-loader": "^0.23.0",
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.5",
+    "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",

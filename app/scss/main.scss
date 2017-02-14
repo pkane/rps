@@ -1,3 +1,5 @@
+/* Global */
+
 body {
   font-family: helvetica, arial, sans-serif;
   font-weight: 100;
@@ -5,30 +7,6 @@ body {
   margin: 0;    
   padding: 0 1rem;
   text-align: center;
-}
-
-.container {
-  margin-top: 35px;
-}
-
-.header > div {
-  padding: 0;
-}
-
-.header h1 {
-  margin-top: 0;
-}
-
-.header h3 {
-  margin-top: 8px;
-}
-
-.header p {
-  margin: 0;
-}
-
-.footer {
-  clear: both;
 }
 
 a {
@@ -39,10 +17,48 @@ a:hover {
   color: #4CA1E7;
 }
 
+.container {
+  margin-top: 35px;
+}
+
+.header {
+  div {
+    padding: 0;    
+  }
+
+  h1 {
+    margin-top: 0;
+  }  
+
+  h3 {
+    margin-top: 8px;
+  }  
+
+  p {
+    margin: 0;
+  }  
+}
+
+.footer {
+  clear: both;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
 /* RPS Game */
 
 #app {
   margin-bottom: 1rem;
+}
+
+.component {
+  margin: 4rem 0;
+}
+
+.rounds-selector > h4 {
+  font-size: 18px;
 }
 
 .rps-option {
@@ -57,42 +73,42 @@ a:hover {
   height: 100px;
   background-position: center;
   background-repeat: no-repeat;
-}
 
-.rps-option:before {
-  position: absolute;
-  display: block;
-  width: 20px;
-  height: 20px;
-  bottom: 0;
-  left: -1.5rem;
-  text-indent: initial;
-  font-size: 1.5em;
-  line-height: 0;  
-}
+  &:before {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: -1.5rem;
+    text-indent: initial;
+    font-size: 1.5em;
+    line-height: 0;  
+  }
 
-.rps-option.rock {
-  background-image: url('../public/assets/rock-icon.svg')
-}
+  &.rock {
+    background-image: url('./assets/rock-icon.svg')  
+  }  
 
-.rps-option.rock:before {
-  content: '1';
-}
+  &.rock:before {
+    content: '1';
+  }  
 
-.rps-option.paper {
-  background-image: url('../public/assets/paper-icon.svg')
-}
+  &.paper {
+    background-image: url('./assets/paper-icon.svg')
+  }  
 
-.rps-option.paper:before {
-  content: '2';
-}
+  &.paper:before {
+    content: '2';
+  } 
 
-.rps-option.scissors {
-  background-image: url('../public/assets/scissors-icon.svg')
-}    
+  &.scissors {
+    background-image: url('./assets/scissors-icon.svg')
+  }      
 
-.rps-option.scissors:before {
-  content: '3';
+  &.scissors:before {
+    content: '3';
+  }    
 }
 
 .clearFix {

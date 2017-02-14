@@ -31,8 +31,7 @@ The [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html)
 
 Just run the server from the project root
 
-`$ webpack-dev-server` or
-`npm run dev-server`
+`$ npm run serve` to run the server.
 
 ***
 
